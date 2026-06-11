@@ -20,7 +20,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Run install.sh
+      - name: Make the script executable
+        run: chmod +x install.sh build.sh
+      - name: Run the install script
         run: ./install.sh
 
 # ------- Job 2: (for now its lint & static analysis but may change later) ----------
