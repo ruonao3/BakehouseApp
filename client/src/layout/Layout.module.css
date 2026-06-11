@@ -1,0 +1,63 @@
+.shell {
+    min-height: 100vh;
+    width: 100%;
+    background: #07074e;
+    color: #ffffff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  .header {
+    background: #3a4fa2;
+    padding: 18px 22px 22px;
+    border-bottom: 3px solid #588bb4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .brand {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: 0.4px;
+    text-align: center;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .tab {
+    border: 1px solid #d8dcea;
+    padding: 6px 12px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 14px;
+    background: transparent;
+    transition: all 0.15s ease;
+  }
+  
+  .tab:hover {
+    background: #588bb4;
+    border-color: #588bb4;
+  }
+  
+  .active {
+    background: #ffffff;
+    color: #07074e;
+    border-color: #ffffff;
+    font-weight: 600;
+  }
+  
+  .main {
+    width: 100%;
+    padding: 40px 24px;
+    background: #fdf4e3;
+    color: #07074e;
+    min-height: calc(100vh - 140px);
+    box-sizing: border-box;
+  }

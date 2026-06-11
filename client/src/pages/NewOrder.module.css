@@ -1,0 +1,91 @@
+.wrap {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .form {
+    margin-top: 24px;
+    background: #ffffff;
+    border: 2px solid #d8dcea;
+    border-radius: 16px;
+    padding: 24px;
+  }
+  
+  label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    color: #07074e;
+    margin-bottom: 18px;
+  }
+  
+  select,
+  input {
+    margin-top: 6px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #d8dcea;
+    font-size: 14px;
+  }
+  
+  .loading {
+    margin: 0.5rem 0;
+    font-style: italic;
+  }
+  
+  .items {
+    margin-top: 12px;
+  }
+  
+  .itemRow {
+    display: grid;
+    grid-template-columns: 1fr 100px 40px;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  
+  .add {
+    margin-top: 8px;
+    background: #ddeaf0;
+    border: 1px dashed #588bb4;
+    color: #07074e;
+    padding: 8px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  
+  .remove {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #c0392b;
+  }
+  
+  .submit {
+    margin-top: 20px;
+    background: #3a4fa2;
+    color: #ffffff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 14px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+
+  }
+  
+  
+  /* Disabled state */
+  .submit:disabled {
+    background-color: #b8bfdc; /* muted version of your brand colour */
+    color: #ffffff;
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  /* Optional: subtle hover only when enabled */
+  .submit:not(:disabled):hover {
+    background-color: #588bb4;
+  }

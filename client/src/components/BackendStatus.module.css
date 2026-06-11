@@ -1,0 +1,36 @@
+.container {
+    padding: 16px;
+    margin: 20px auto;
+    max-width: 420px;
+    border-radius: 8px;
+    text-align: center;
+    background: #fff;
+    border: 2px solid #588bb4;
+    font-family: Inter, sans-serif;
+}
+
+.title {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.online {
+    color: green;
+    font-weight: bold;
+}
+
+.offline {
+    color: red;
+    font-weight: bold;
+}
+
+.checking {
+    color: #555;
+    font-style: italic;
+}
+
+.subtext {
+    font-size: 0.85rem;
+    margin-top: 6px;
+}

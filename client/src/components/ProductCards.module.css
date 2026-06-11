@@ -1,0 +1,39 @@
+.wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+  }
+  
+  .card {
+    background: #ffffff;
+    border: 2px solid #d8dcea;
+    border-radius: 14px;
+    padding: 16px;
+  }
+  
+  .name {
+    font-weight: 700;
+    color: #07074e;
+    margin-bottom: 12px;
+  }
+  
+  .link {
+    display: inline-block;
+    text-decoration: none;
+    color: #07074e;
+    border: 1px solid #588bb4;
+    background: #ddeaf0;
+    padding: 8px 12px;
+    border-radius: 12px;
+  }
+  
+  .link:hover {
+    background: #588bb4;
+    color: #ffffff;
+  }

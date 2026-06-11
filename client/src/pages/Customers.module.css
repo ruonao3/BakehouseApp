@@ -1,0 +1,35 @@
+.wrap {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 2px solid #d8dcea;
+  }
+  
+  th,
+  td {
+    padding: 12px 14px;
+    text-align: left;
+  }
+  
+  th {
+    background: #ddeaf0;
+    color: #07074e;
+    font-weight: 700;
+    border-bottom: 2px solid #d8dcea;
+  }
+  
+  td {
+    border-bottom: 1px solid #d8dcea;
+  }
+  
+  tr:last-child td {
+    border-bottom: none;
+  }

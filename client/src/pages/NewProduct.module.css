@@ -1,0 +1,87 @@
+.wrap {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  
+  .form {
+    margin-top: 24px;
+    background: #ffffff;
+    border: 2px solid #d8dcea;
+    border-radius: 16px;
+    padding: 24px;
+  }
+  
+  label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    color: #07074e;
+    margin-bottom: 16px;
+  }
+  
+  input {
+    margin-top: 6px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #d8dcea;
+    font-size: 14px;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #588bb4;
+  }
+  
+  button {
+    margin-top: 12px;
+    background: #3a4fa2;
+    color: #ffffff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: #588bb4;
+  }
+
+  .submit {
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+  }
+  
+  .submit:disabled {
+    background-color: #b8bfdc;
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .submit:not(:disabled):hover {
+    background-color: #2f3fa5;
+  }
+  
+  .loading {
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .success {
+    margin-top: 12px;
+    color: #2e7d32;
+    font-weight: 500;
+  }
+  
+  .error {
+    margin-top: 12px;
+    color: #c62828;
+    font-weight: 500;
+  }

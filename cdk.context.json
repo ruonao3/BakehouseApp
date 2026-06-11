@@ -1,0 +1,53 @@
+{
+  "acknowledged-issue-numbers": [
+    34892
+  ],
+  "hosted-zone:account=827602716979:domainName=cta-training.academy:region=eu-west-2": {
+    "Id": "/hostedzone/Z02020021LSUCOE3AOCJC",
+    "Name": "cta-training.academy."
+  },
+  "vpc-provider:account=827602716979:filter.tag:Name=CTASharedVPC-vpc:region=eu-west-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-0dad1e0d536bd7fb6",
+    "vpcCidrBlock": "10.0.0.0/16",
+    "ownerAccountId": "827602716979",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-0e4c23b4768dfe451",
+            "cidr": "10.0.0.0/20",
+            "availabilityZone": "eu-west-2a",
+            "routeTableId": "rtb-000d49fa268a040fc"
+          },
+          {
+            "subnetId": "subnet-041b236d37b352f11",
+            "cidr": "10.0.16.0/20",
+            "availabilityZone": "eu-west-2b",
+            "routeTableId": "rtb-000d49fa268a040fc"
+          }
+        ]
+      },
+      {
+        "name": "Isolated",
+        "type": "Isolated",
+        "subnets": [
+          {
+            "subnetId": "subnet-0057430ac26c97c6d",
+            "cidr": "10.0.128.0/20",
+            "availabilityZone": "eu-west-2a",
+            "routeTableId": "rtb-0dc025fa84a3048c4"
+          },
+          {
+            "subnetId": "subnet-083f81f14d9491a6b",
+            "cidr": "10.0.144.0/20",
+            "availabilityZone": "eu-west-2b",
+            "routeTableId": "rtb-0442c66e1fa8a9d76"
+          }
+        ]
+      }
+    ]
+  }
+}
