@@ -24,7 +24,7 @@ const settings = {
   sharedOriginRequestPolicyId: "6d7a8520-10b9-4b88-ae47-770229103b35",
   githubOrg: process.env.GITHUB_ORG ?? "ruonao3",
   githubRepo: process.env.GITHUB_REPO ?? "BakehouseApp",
-  githubRefFilter: "refs/heads/main",
+  githubRefFilter: "ref:refs/heads/main",
 };
 
 const app = new cdk.App();
