@@ -17,14 +17,14 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./ ./client
+        working-directory: ./
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
       - name: Make the script executable
-        run: chmod +x install.sh build.sh
+        run: chmod +x install.sh 
       - name: Run the install script
         run: ./install.sh
 
