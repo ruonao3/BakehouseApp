@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { RuonaBakehouseStackBakehouseStack } from "../lib/bakehouse-stack.js";
+import { RuonaBakehouseStack } from "../lib/bakehouse-stack.js";
 import * as cdk from "aws-cdk-lib";
 
 const stackName = process.env.BAKEHOUSE_STACK_NAME;
