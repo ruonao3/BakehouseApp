@@ -12,7 +12,7 @@ if (!stackName || !stackName.trim()) {
 const settings = {
   env: {
     account: process.env.CDK_DEFAULT_ACCOUNT || "NOT_SET",
-    region: process.env.CDK_DEFAULT_REGION || "NOT_SET",
+    region: process.env.CDK_DEFAULT_REGION || "eu-west-2",
   },
   stackName: stackName,
   certArn: cdk.Fn.importValue("CTASharedCertArn"), // SSL cert for HTTPS
@@ -22,6 +22,9 @@ const settings = {
   dbName: "dev",
   vpcName: "CTASharedVPC-vpc",
   sharedOriginRequestPolicyId: "6d7a8520-10b9-4b88-ae47-770229103b35",
+  githubOrg: process.env.GITHUB_ORG ?? "ruonao3",
+  githubRepo: process.env.GITHUB_REPO ?? "BakehouseApp",
+  githubRefFilter: "*",
 };
 
 const app = new cdk.App();
@@ -36,4 +39,7 @@ new RuonaBakehouseStack(app, `${settings.stackName}-stack`, {
   dbName: settings.dbName,
   vpcName: settings.vpcName,
   sharedOriginRequestPolicyId: settings.sharedOriginRequestPolicyId,
+  githubOrg: settings.githubOrg,
+  githubRefFilter: settings.githubRefFilter,
+  githubRepo: settings.githubRepo,
 });
