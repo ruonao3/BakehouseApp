@@ -1,0 +1,43 @@
+name: CI/CD Pipeline
+run-name: ${{ github.actor }} is deploying the cdk
+on:
+  push: 
+    branches: [main]
+
+env:
+  BAKEHOUSE_STACK_NAME: ruona-okungbowa-bakehouse
+  CDK_DEFAULT_REGION: eu-west-2
+
+
+jobs:
+
+  # ----------- Job 1: Always runs first, so install all the dependencies --------
+  install-dependencies:
+    name: Install dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run install.sh
+        run: ./install.sh
+
+# ------- Job 2: (for now its lint & static analysis but may change later) ----------
+  lint:
+    name: Lint & Static Analysis
+    runs-on: ubuntu-latest
+    needs: install-dependencies
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run linter
+        run: echo "Running lint checks"
+      - name: Run static analysis
+        run: echo "Running static analysis"
+  
+
+  # -------- Job 3: Configure and login to AWS ------------------
+  # configure-aws:
+  #   name: Configure & Login to AWS
+  #   runs-on: ubuntu-latest
+  #   st
