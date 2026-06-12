@@ -62,4 +62,4 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN}}
           aws-region: ${{ env.AWS_REGION }}
       - name: Check AWS identity
-        run: aws sts get-caller-identity --profile student
+        run: aws sts get-caller-identity
