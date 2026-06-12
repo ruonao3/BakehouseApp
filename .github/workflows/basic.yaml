@@ -45,7 +45,6 @@ jobs:
         run: echo "Running lint checks"
       - name: Run static analysis
         run: echo "Running static analysis"
-  
 
   # -------- Job 3: Do the unit tests --------------------------
 
@@ -53,7 +52,6 @@ jobs:
   configure-aws:
     name: Configure and Verify AWS
     needs: lint
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Configure AWS credentials using OIDC
@@ -75,3 +73,29 @@ jobs:
             echo "Current session: ${ROLE_SESSION}"
       - name: Check AWS identity
         run: aws sts get-caller-identity
+  # ------- Job 5: Synth the Stack -------------
+  synth-stack:
+    name: Synthesize the Stack
+    needs: configure-aws
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Synth CDK stack
+        run: npx cdk synth 
+  # ------- Job 6: Deploy the Stack ------------
+  deploy-stack:
+    name: Deploy the Stack
+    needs: synth-stack
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Deploy the CDK stack
+        run: npx cdk deploy --all --require-approval never
+  # -------- Job 7: Playwright Tests --------------------------
+  # -------- Job 8: Run Mini K6 Test --------------------------
