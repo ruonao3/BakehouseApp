@@ -17,7 +17,7 @@ env:
 
 jobs:
 
-  # ----------- Job 1: Always runs first, so install all the dependencies --------
+# ----------- Job 1: Always runs first, so install all the dependencies --------
   install-dependencies:
     name: Install dependencies
     runs-on: ubuntu-latest
@@ -46,9 +46,9 @@ jobs:
       - name: Run static analysis
         run: echo "Running static analysis"
 
-  # -------- Job 3: Do the unit tests --------------------------
+# -------- Job 3: Do the unit tests --------------------------
 
-  # -------- Job 4: Configure AWS ------------------
+# -------- Job 4: Configure AWS ------------------
   configure-aws:
     name: Configure and Verify AWS
     needs: lint
@@ -73,29 +73,40 @@ jobs:
             echo "Current session: ${ROLE_SESSION}"
       - name: Check AWS identity
         run: aws sts get-caller-identity
-  # ------- Job 5: Synth the Stack -------------
+
+# ------- Job 5: Synth and Deploy the Stack -------------
   synth-stack:
-    name: Synthesize the Stack
+    name: Synthesize and Deploy the Stack
     needs: configure-aws
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      - name: Make the script executable
+        run: chmod +x install.sh 
+      - name: Run the install script
+        run: ./install.sh
+
+      - name: Configure AWS credentials using OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN}}
+          # Session name now includes:
+          # gha-cdk-{student}-{run_id}-{attempt}
+          # Example: gha-cdk-alice-1234567890-1
+          role-session-name: ${{ needs.setup.outputs.session-name }}
+          aws-region: ${{ env.AWS_REGION }}
+
       - name: Synth CDK stack
         run: npx cdk synth 
-  # ------- Job 6: Deploy the Stack ------------
-  deploy-stack:
-    name: Deploy the Stack
-    needs: synth-stack
-    runs-on: ubuntu-latest
-    steps:
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+
       - name: Deploy the CDK stack
         run: npx cdk deploy --all --require-approval never
-  # -------- Job 7: Playwright Tests --------------------------
-  # -------- Job 8: Run Mini K6 Test --------------------------
+# -------- Job 7: Playwright Tests --------------------------
+# -------- Job 8: Run Mini K6 Test --------------------------
