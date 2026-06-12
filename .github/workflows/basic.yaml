@@ -1,10 +1,10 @@
 name: CI/CD Pipeline
 run-name: ${{ github.actor }} is deploying the cdk
 on:
-# workflow dispatch allows us to manually trigger Github actions workflows
-  # workflow_dispatch:
   push: 
     branches: [main]
+    # workflow dispatch allows us to manually trigger Github actions workflows
+  workflow_dispatch:
 
 permissions:
   id-token: write
@@ -51,7 +51,7 @@ jobs:
 
   # -------- Job 4: Configure AWS ------------------
   configure-aws:
-    name: Configure AWS
+    name: Configure and Verify AWS
     needs: lint
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
@@ -60,6 +60,18 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN}}
+          # Session name now includes:
+          # gha-cdk-{student}-{run_id}-{attempt}
+          # Example: gha-cdk-alice-1234567890-1
+          role-session-name: ${{ needs.setup.outputs.session-name }}
           aws-region: ${{ env.AWS_REGION }}
+      - name: Verify OIDC credentials
+        run: |
+            echo "Verifying AWS credentials..."
+            IDENTITY=$(aws sts get-caller-identity)
+            echo "Assumed role:"
+            echo "${IDENTITY}" | jq '.'
+            ROLE_SESSION=$(echo "${IDENTITY}" | jq -r '.Arn' | grep -oP '(?<=/)[^/]+$')
+            echo "Current session: ${ROLE_SESSION}"
       - name: Check AWS identity
         run: aws sts get-caller-identity
